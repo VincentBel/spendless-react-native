@@ -1,10 +1,13 @@
 import React, {
   Component,
+  PropTypes,
   StyleSheet,
   BackAndroid,
   Navigator,
 } from 'react-native'
+import { connect } from 'react-redux'
 import MainScreen from './MainScreen'
+import Register from './Register'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,6 +17,9 @@ const styles = StyleSheet.create({
 })
 
 class AppNavigator extends Component {
+  static propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+  }
   static childContextTypes = {
     addBackButtonListener: React.PropTypes.func,
     removeBackButtonListener: React.PropTypes.func,
@@ -22,6 +28,7 @@ class AppNavigator extends Component {
   constructor(props, context) {
     super(props, context)
     this._handlers = []
+    this.renderScene = this.renderScene.bind(this)
   }
 
   getChildContext() {
@@ -63,6 +70,9 @@ class AppNavigator extends Component {
   }
 
   renderScene(route, navigator) {
+    if (!this.props.isLoggedIn) {
+      return <Register />
+    }
     return <MainScreen navigator={navigator} />
   }
 
@@ -79,4 +89,10 @@ class AppNavigator extends Component {
   }
 }
 
-export default AppNavigator
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: !!state.auth.token,
+  }
+}
+
+export default connect(mapStateToProps)(AppNavigator)
