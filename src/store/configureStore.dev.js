@@ -1,25 +1,27 @@
-import { compose, createStore, applyMiddleware } from 'redux'
+// import { Platform } from 'react-native'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
 import api from '../middleware/api'
 import rootReducer from '../reducers'
-import devTools from 'remote-redux-devtools'
+
+const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent
+
+const logger = createLogger({
+  predicate: () => isDebuggingInChrome,
+  collapsed: true,
+  duration: true,
+})
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
-    compose(
-      applyMiddleware(thunk, api),
-      devTools()
-    )
+    applyMiddleware(thunk, api, logger)
   )
 
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default
-      store.replaceReducer(nextRootReducer)
-    })
+  if (isDebuggingInChrome) {
+    window.store = store
   }
 
   return store
