@@ -76,10 +76,11 @@ export default class RaisedButton extends Component {
     return (
       <TouchableNativeFeedback
         background={TouchableNativeFeedback.Ripple(rippleColor)}
-        onPress={!disabled ? onPress : null}
-        onLongPress={!disabled ? onLongPress : null}
-        onPressIn={!disabled ? this._handlePressIn : null}
-        onPressOut={!disabled ? this._handlePressOut : null}
+        disabled={disabled}
+        onPress={onPress}
+        onLongPress={onLongPress}
+        onPressIn={this._handlePressIn}
+        onPressOut={this._handlePressOut}
       >
         <View
           style={[
