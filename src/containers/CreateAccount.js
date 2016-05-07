@@ -6,7 +6,7 @@ import React, {
   ToastAndroid,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { CreateAccountForm } from '../components'
+import { CreateAccountForm, LoadingModal } from '../components'
 import { createAccount } from '../reducers/accounts'
 
 const styles = StyleSheet.create({
@@ -43,9 +43,14 @@ class CreateAccount extends Component {
 
 
   render() {
+    const { isCreating } = this.props
     return (
       <View style={styles.root}>
         <CreateAccountForm onSubmit={this.submit} />
+        <LoadingModal
+          visible={isCreating}
+          text="创建账户中..."
+        />
       </View>
     )
   }
