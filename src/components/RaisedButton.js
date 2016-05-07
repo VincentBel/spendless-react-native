@@ -41,7 +41,6 @@ export default class RaisedButton extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
-    raised: PropTypes.bool,
     onPress: PropTypes.func,
     onLongPress: PropTypes.func,
     style: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
