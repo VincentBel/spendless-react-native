@@ -38,6 +38,7 @@ function RegisterForm({ submitting, handleSubmit }) {
           <IconTextInput
             {...email}
             iconName="email"
+            keyboardType="email-address"
             placeholder="邮箱地址"
             errorText={getErrorText(email)}
           />
@@ -48,7 +49,7 @@ function RegisterForm({ submitting, handleSubmit }) {
         component={password =>
           <IconTextInput
             {...password}
-            type="password"
+            secureTextEntry
             iconName="lock-outline"
             placeholder="密码"
             errorText={getErrorText(password)}
