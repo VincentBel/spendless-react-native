@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 class App extends Component {
   static propTypes = {
     centralizedError: PropTypes.shape({
-      code: PropTypes.number.isRequired,
+      code: PropTypes.number,
       message: PropTypes.string.isRequired,
     }),
     resetCentralizedError: PropTypes.func.isRequired,
