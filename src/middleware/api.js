@@ -1,10 +1,13 @@
 import { Schema, arrayOf, normalize } from 'normalizr'
 
 const userSchema = new Schema('users')
+const accountSchema = new Schema('accounts')
 
 export const Schemas = {
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
+  ACCOUNT: accountSchema,
+  ACCOUNT_ARRAY: arrayOf(accountSchema),
 }
 
 // TODO change api server url

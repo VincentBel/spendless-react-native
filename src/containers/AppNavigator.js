@@ -7,6 +7,7 @@ import React, {
 } from 'react-native'
 import { connect } from 'react-redux'
 import MainScreen from './MainScreen'
+import CreateAccount from './CreateAccount'
 import Register from './Register'
 
 const styles = StyleSheet.create({
@@ -73,6 +74,9 @@ class AppNavigator extends Component {
     if (!this.props.isLoggedIn) {
       return <Register />
     }
+    if (route.createAccount) {
+      return <CreateAccount navigator={navigator} />
+    }
     return <MainScreen navigator={navigator} />
   }
 
@@ -91,6 +95,8 @@ class AppNavigator extends Component {
 
 function mapStateToProps(state) {
   return {
+    // Todo
+    // isLoggedIn: true,
     isLoggedIn: !!state.auth.token,
   }
 }

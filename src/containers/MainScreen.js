@@ -1,5 +1,6 @@
 import React, {
   Component,
+  PropTypes,
   StyleSheet,
   View,
   ToolbarAndroid,
@@ -23,7 +24,12 @@ const styles = StyleSheet.create({
 })
 
 class MainScreen extends Component {
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  }
+
   render() {
+    const { navigator } = this.props
     return (
       <View style={styles.root}>
         <ToolbarAndroid
@@ -33,7 +39,7 @@ class MainScreen extends Component {
         <ScrollableTabView>
           <General tabLabel="总览" />
           <Chart tabLabel="报表" />
-          <Account tabLabel="账户" />
+          <Account tabLabel="账户" navigator={navigator} />
           <Me tabLabel="我" />
         </ScrollableTabView>
       </View>
