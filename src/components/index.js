@@ -1,6 +1,7 @@
 export { default as FloatingActionButton } from './FloatingActionButton'
 export { default as Icon } from './Icon'
 export { default as IconTextInput } from './IconTextInput'
+export { default as IconPicker } from './IconPicker'
 export { default as Loading } from './Loading'
 export { default as LoadingModal } from './LoadingModal'
 export { default as RaisedButton } from './RaisedButton'
