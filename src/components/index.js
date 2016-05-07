@@ -1,3 +1,4 @@
+export { default as CreateAccountForm } from './CreateAccountForm'
 export { default as FloatingActionButton } from './FloatingActionButton'
 export { default as Icon } from './Icon'
 export { default as IconTextInput } from './IconTextInput'
