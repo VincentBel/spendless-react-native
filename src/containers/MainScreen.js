@@ -37,7 +37,7 @@ class MainScreen extends Component {
           title="Spendless"
         />
         <ScrollableTabView>
-          <General tabLabel="总览" />
+          <General tabLabel="总览" navigator={navigator} />
           <Chart tabLabel="报表" />
           <Account tabLabel="账户" navigator={navigator} />
           <Me tabLabel="我" />

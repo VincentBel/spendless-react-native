@@ -3,11 +3,19 @@ import { Schema, arrayOf, normalize } from 'normalizr'
 const userSchema = new Schema('users')
 const accountSchema = new Schema('accounts')
 
+const mainCategorySchema = new Schema('mainCategories')
+const subCategorySchema = new Schema('subCategories')
+mainCategorySchema.define({
+  subCategories: arrayOf(subCategorySchema),
+})
+
 export const Schemas = {
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
   ACCOUNT: accountSchema,
   ACCOUNT_ARRAY: arrayOf(accountSchema),
+  MAIN_CATEGORY: mainCategorySchema,
+  MAIN_CATEGORY_ARRAY: arrayOf(mainCategorySchema),
 }
 
 // TODO change api server url

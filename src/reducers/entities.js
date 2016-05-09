@@ -2,6 +2,8 @@ import merge from 'lodash/merge'
 
 export default function reducer(state = {
   accounts: {},
+  mainCategories: {},
+  subCategories: {},
 }, action = {}) {
   if (action.response && action.response.entities) {
     return merge({}, state, action.response.entities)
