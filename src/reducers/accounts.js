@@ -38,7 +38,7 @@ function createReducer(state = createDefaultState, action) {
 
 const itemsDefaultState = {
   isFetching: false,
-  ids: [],
+  ids: null,
 }
 
 function itemsReducers(state = itemsDefaultState, action) {

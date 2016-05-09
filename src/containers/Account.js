@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
+  emptyView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   listView: {
     flex: 1,
   },
@@ -54,7 +59,7 @@ class Account extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    accounts: PropTypes.array.isRequired,
+    accounts: PropTypes.array,
     loadAccounts: PropTypes.func.isRequired,
   }
 
@@ -83,6 +88,14 @@ class Account extends Component {
     this.props.navigator.push({ createAccount: true })
   }
 
+  renderEmptyView() {
+    return (
+      <View style={styles.emptyView}>
+        <Text>您还没有账户, 点击下方 + 按钮创建一个账户</Text>
+      </View>
+    )
+  }
+
   renderAccount({ name, type, amount }) {
     const { label, icon, color } = types.find(t => t.type === type) || {}
     return (
@@ -105,17 +118,24 @@ class Account extends Component {
   }
 
   render() {
+    let content
     if (this.props.isFetching) {
-      return <Loading />
-    }
-    return (
-      <View style={styles.root}>
+      content = <Loading />
+    } else if (!this.props.accounts.length) {
+      content = this.renderEmptyView()
+    } else {
+      content = (
         <ListView
           style={styles.listView}
           dataSource={this.state.accounts}
           renderRow={this.renderAccount}
           renderFooter={this.renderFooter}
         />
+      )
+    }
+    return (
+      <View style={styles.root}>
+        {content}
         <FloatingActionButton iconName="add" onPress={this._openCreateAccount} />
       </View>
     )
@@ -125,11 +145,11 @@ class Account extends Component {
 function mapStateToProps(state) {
   const {
     entities: { accounts },
-    accounts: { items: { isFetching, ids = [] } },
+    accounts: { items: { isFetching, ids } },
   } = state
   return {
     isFetching,
-    accounts: ids.map(id => accounts[id]),
+    accounts: ids ? ids.map(id => accounts[id]) : null,
   }
 }
 
