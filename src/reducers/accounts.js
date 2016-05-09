@@ -1,5 +1,9 @@
 import { CALL_AUTH_API, Schemas } from '../middleware/api'
 
+const ACCOUNTS_REQUEST = 'ACCOUNTS_REQUEST'
+const ACCOUNTS_SUCCESS = 'ACCOUNTS_SUCCESS'
+const ACCOUNTS_FAILURE = 'ACCOUNTS_FAILURE'
+
 const CREATE_ACCOUNT_REQUEST = 'CREATE_ACCOUNT_REQUEST'
 const CREATE_ACCOUNT_SUCCESS = 'CREATE_ACCOUNT_SUCCESS'
 const CREATE_ACCOUNT_FAILURE = 'CREATE_ACCOUNT_FAILURE'
@@ -32,8 +36,37 @@ function createReducer(state = createDefaultState, action) {
   }
 }
 
+const itemsDefaultState = {
+  isFetching: false,
+  ids: [],
+}
+
+function itemsReducers(state = itemsDefaultState, action) {
+  switch (action.type) {
+    case ACCOUNTS_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      }
+    case ACCOUNTS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        ids: action.response.result,
+      }
+    case ACCOUNTS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+      }
+    default:
+      return state
+  }
+}
+
 export default function reducer(state = {
   create: createDefaultState,
+  items: itemsDefaultState,
 }, action) {
   switch (action.type) {
     case CREATE_ACCOUNT_REQUEST:
@@ -42,6 +75,13 @@ export default function reducer(state = {
       return {
         ...state,
         create: createReducer(state.create, action),
+      }
+    case ACCOUNTS_REQUEST:
+    case ACCOUNTS_SUCCESS:
+    case ACCOUNTS_FAILURE:
+      return {
+        ...state,
+        items: itemsReducers(action.items, action),
       }
     default:
       return state
@@ -63,5 +103,25 @@ export function createAccount(accountInfo) {
       },
       schema: Schemas.ACCOUNT,
     },
+  }
+}
+
+function fetchAccounts() {
+  return {
+    [CALL_AUTH_API]: {
+      types: [ACCOUNTS_REQUEST, ACCOUNTS_SUCCESS, ACCOUNTS_FAILURE],
+      endpoint: 'accounts',
+      schema: Schemas.ACCOUNT_ARRAY,
+    },
+  }
+}
+
+export function loadAccounts() {
+  return (dispatch, getState) => {
+    const ids = getState().accounts.items.ids
+    if (ids) {
+      return null
+    }
+    return dispatch(fetchAccounts())
   }
 }
