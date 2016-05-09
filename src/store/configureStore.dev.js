@@ -1,7 +1,8 @@
-// import { Platform } from 'react-native'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { persistStore, autoRehydrate } from 'redux-persist'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
+import { AsyncStorage } from 'react-native'
 import api from '../middleware/api'
 import rootReducer from '../reducers'
 
@@ -13,12 +14,16 @@ const logger = createLogger({
   duration: true,
 })
 
-export default function configureStore(initialState) {
+export default function configureStore(onComplete) {
   const store = createStore(
     rootReducer,
-    initialState,
-    applyMiddleware(thunk, api, logger)
+    undefined, // no need for initialState
+    compose(
+      autoRehydrate(),
+      applyMiddleware(thunk, api, logger)
+    )
   )
+  persistStore(store, { storage: AsyncStorage }, onComplete)
 
   if (isDebuggingInChrome) {
     window.store = store
