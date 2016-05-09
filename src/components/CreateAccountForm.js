@@ -7,6 +7,7 @@ import { Field, reduxForm } from 'redux-form'
 import IconTextInput from './IconTextInput'
 import IconPicker from './IconPicker'
 import RaisedButton from './RaisedButton'
+import { types } from '../helpers/accounts'
 
 function getErrorText(field) {
   return field.touched ? field.error : null
@@ -18,24 +19,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
   },
 })
-
-const allTypes = [
-  'cash',
-  'debitCard',
-  'creditCard',
-  'alipay',
-  'wechatpay',
-  'others',
-]
-
-const allTypesValues = {
-  cash: '现金',
-  debitCard: '储蓄卡',
-  creditCard: '信用卡',
-  alipay: '支付宝',
-  wechatpay: '微信支付',
-  others: '其他',
-}
 
 function CreateAccountForm({ submitting, handleSubmit }) {
   return (
@@ -62,8 +45,8 @@ function CreateAccountForm({ submitting, handleSubmit }) {
             prompt="选择账户类型"
             errorText={getErrorText(type)}
           >
-            {allTypes.map(t => (
-              <IconPicker.Item key={t} label={allTypesValues[t]} value={t} />
+            {types.map(({ type: value, label }) => (
+              <IconPicker.Item key={value} label={label} value={value} />
             ))}
           </IconPicker>
         }
