@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 24,
   },
   text: {
     marginLeft: 12,
@@ -48,6 +49,6 @@ Loading.propTypes = {
     'SmallInverse',
     'LargeInverse',
   ]),
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   style: PropTypes.number,
 }
