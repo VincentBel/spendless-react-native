@@ -29,13 +29,15 @@ function callApi(endpoint, schema, options) {
   return fetch(fullUrl, options)
    .catch(err => {
      if (__DEV__) {
-       console.log(err)
+       // eslint-disable-next-line no-console
+       console.error(err)
      }
      return Promise.reject({ message: '您的网络似乎出问题啦，请检查您的网络连接' })
    })
    .then(response =>
      response.json().then(json => ({ json, response }))
-   ).then(({ json, response }) => {
+   )
+   .then(({ json, response }) => {
      if (!response.ok) {
        if (response.status === 500) {
          return Promise.reject({
