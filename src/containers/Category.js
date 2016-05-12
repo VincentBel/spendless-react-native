@@ -1,12 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  View,
-  Text,
-  StyleSheet,
-  ListView,
-  TouchableHighlight,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { View, Text, StyleSheet, ListView } from 'react-native'
 import { connect } from 'react-redux'
 
 import { Loading, Icon, SlTouchable } from '../components'
@@ -134,7 +127,7 @@ class Category extends Component {
           <Icon
             size={28}
             name={sub.star ? 'star' : 'star-border'}
-            color={sub.star ? yellow500 : grey300 }
+            color={sub.star ? yellow500 : grey300}
           />
         </View>
       </SlTouchable>

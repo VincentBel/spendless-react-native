@@ -1,9 +1,5 @@
-import React, {
-  Component,
-  StyleSheet,
-  PropTypes,
-  Image,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { RegisterForm, Title, LoadingModal } from '../components'
 import { register } from '../reducers/auth'

@@ -1,11 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  StyleSheet,
-  StatusBar,
-  View,
-  Alert,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, StatusBar, View, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { resetCentralizedError } from '../reducers/centralizedError'
 import AppNavigator from './AppNavigator'

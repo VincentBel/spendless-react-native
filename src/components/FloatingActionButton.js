@@ -1,9 +1,5 @@
-import React, {
-  StyleSheet,
-  PropTypes,
-  View,
-  TouchableNativeFeedback,
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { StyleSheet, View, TouchableNativeFeedback } from 'react-native'
 import Icon from './Icon'
 import { accentColor } from '../theme'
 

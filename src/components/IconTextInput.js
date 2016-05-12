@@ -1,11 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import Icon from './Icon'
 import { primaryColor, errorColor } from '../theme'
 

@@ -1,10 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  StyleSheet,
-  View,
-  ToastAndroid,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, View, ToastAndroid } from 'react-native'
 import { connect } from 'react-redux'
 import { CreateAccountForm, LoadingModal } from '../components'
 import { createAccount } from '../reducers/accounts'

@@ -1,11 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  StyleSheet,
-  Text,
-  TouchableNativeFeedback,
-  View,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native'
 import { primaryColor, rippleColor, disabledTextColor, disabledBackgroundColor } from '../theme'
 
 const styles = StyleSheet.create({

@@ -1,11 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  StyleSheet,
-  Text,
-  View,
-  ListView,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, Text, View, ListView } from 'react-native'
 import { connect } from 'react-redux'
 import { loadAccounts } from '../reducers/accounts'
 import { FloatingActionButton, Icon, Loading, SlTouchable } from '../components'

@@ -1,8 +1,5 @@
-import React, {
-  StyleSheet,
-  PropTypes,
-  View,
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { StyleSheet, View } from 'react-native'
 import { Field, reduxForm } from 'redux-form'
 import IconTextInput from './IconTextInput'
 import RaisedButton from './RaisedButton'

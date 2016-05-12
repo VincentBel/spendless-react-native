@@ -1,7 +1,5 @@
-import React, {
-  PropTypes,
-  TouchableNativeFeedback,
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { TouchableNativeFeedback } from 'react-native'
 import { rippleColor as defaultRippleColor } from '../theme'
 
 

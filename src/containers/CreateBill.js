@@ -3,13 +3,9 @@
  * Date: 16/5/9
  */
 
-import React, {
-  PropTypes,
-  Component,
-  StyleSheet,
-  View,
-  Text,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+
+import { StyleSheet, View, Text } from 'react-native'
 import { Icon, SlTouchable } from '../components'
 
 const styles = StyleSheet.create({

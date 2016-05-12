@@ -1,10 +1,5 @@
-import React, {
-  PropTypes,
-  StyleSheet,
-  Text,
-  Picker,
-  View,
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { StyleSheet, Text, Picker, View } from 'react-native'
 import Icon from './Icon'
 import { errorColor } from '../theme'
 

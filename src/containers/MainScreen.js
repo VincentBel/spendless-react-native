@@ -1,10 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  StyleSheet,
-  View,
-  ToolbarAndroid,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, View, ToolbarAndroid } from 'react-native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 import General from './General'

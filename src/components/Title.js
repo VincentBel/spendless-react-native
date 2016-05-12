@@ -1,8 +1,5 @@
-import React, {
-  PropTypes,
-  Text,
-  StyleSheet,
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { Text, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   title: {

@@ -1,10 +1,5 @@
-import React, {
-  PropTypes,
-  StyleSheet,
-  ProgressBarAndroid,
-  Text,
-  View,
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { StyleSheet, ProgressBarAndroid, Text, View } from 'react-native'
 import { primaryColor } from '../theme'
 
 const styles = StyleSheet.create({

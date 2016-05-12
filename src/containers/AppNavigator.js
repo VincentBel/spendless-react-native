@@ -1,10 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-  StyleSheet,
-  BackAndroid,
-  Navigator,
-} from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { StyleSheet, BackAndroid, Navigator } from 'react-native'
 import { connect } from 'react-redux'
 import MainScreen from './MainScreen'
 import CreateBill from './CreateBill'
