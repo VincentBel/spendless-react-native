@@ -6,7 +6,7 @@
 import React, { Component, PropTypes } from 'react'
 
 import { StyleSheet, View, Text } from 'react-native'
-import { Icon, SlTouchable } from '../components'
+import { Icon, SlTouchable, Header, BackIcon } from '../components'
 
 const styles = StyleSheet.create({
   category: {
@@ -35,12 +35,23 @@ export default class CreateBill extends Component {
   render() {
     return (
       <View>
-        <SlTouchable onPress={this._openCategorySelection}>
-          <View style={styles.category}>
-            <Icon name="view-list" size={24} />
-            <Text>选择类别</Text>
-          </View>
-        </SlTouchable>
+        <Header
+          title="记一笔"
+          leftItem={{
+            icon: BackIcon,
+            title: '返回',
+            layout: 'icon',
+            onPress: () => this.props.navigator.pop(),
+          }}
+        />
+        <View>
+          <SlTouchable onPress={this._openCategorySelection}>
+            <View style={styles.category}>
+              <Icon name="view-list" size={24} />
+              <Text>选择类别</Text>
+            </View>
+          </SlTouchable>
+        </View>
       </View>
     )
   }

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { View, Text, StyleSheet, ListView } from 'react-native'
 import { connect } from 'react-redux'
 
-import { Loading, Icon, SlTouchable } from '../components'
+import { Loading, Icon, SlTouchable, Header, BackIcon } from '../components'
 import { loadCategories, selectMainCategory } from '../reducers/categories'
 import { yellow500, grey100, grey300 } from '../theme/colors'
 
@@ -52,6 +52,7 @@ class Category extends Component {
 
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
+    navigator: PropTypes.object.isRequired,
     selectedMainCategoryId: PropTypes.string.isRequired,
     mainCategories: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -157,6 +158,15 @@ class Category extends Component {
     }
     return (
       <View style={styles.root}>
+        <Header
+          title="选择类别"
+          leftItem={{
+            icon: BackIcon,
+            title: '返回',
+            layout: 'icon',
+            onPress: () => this.props.navigator.pop(),
+          }}
+        />
         {content}
       </View>
     )

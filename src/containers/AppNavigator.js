@@ -26,6 +26,7 @@ class AppNavigator extends Component {
   constructor(props, context) {
     super(props, context)
     this._handlers = []
+    this.handleBackButton = this.handleBackButton.bind(this)
     this.renderScene = this.renderScene.bind(this)
   }
 
@@ -72,7 +73,7 @@ class AppNavigator extends Component {
       return <Register />
     }
     if (route.selectCategory) {
-      return <Category />
+      return <Category navigator={navigator} />
     }
     if (route.createBill) {
       return <CreateBill navigator={navigator} />

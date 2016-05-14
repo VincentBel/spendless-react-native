@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { StyleSheet, View, ToolbarAndroid } from 'react-native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
+import { Header } from '../components'
 import General from './General'
 import Chart from './Chart'
 import Account from './Account'
@@ -11,10 +12,6 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     alignItems: 'stretch',
-  },
-  toolbar: {
-    height: 56,
-    backgroundColor: 'blue',
   },
 })
 
@@ -27,10 +24,7 @@ class MainScreen extends Component {
     const { navigator } = this.props
     return (
       <View style={styles.root}>
-        <ToolbarAndroid
-          style={styles.toolbar}
-          title="Spendless"
-        />
+        <Header title="Spendless" />
         <ScrollableTabView>
           <General tabLabel="总览" navigator={navigator} />
           <Chart tabLabel="报表" />

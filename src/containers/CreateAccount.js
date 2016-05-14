@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, View, ToastAndroid } from 'react-native'
 import { connect } from 'react-redux'
-import { CreateAccountForm, LoadingModal } from '../components'
+import { CreateAccountForm, LoadingModal, Header, BackIcon } from '../components'
 import { createAccount } from '../reducers/accounts'
 
 const styles = StyleSheet.create({
@@ -41,6 +41,15 @@ class CreateAccount extends Component {
     const { isCreating } = this.props
     return (
       <View style={styles.root}>
+        <Header
+          title="创建账户"
+          leftItem={{
+            icon: BackIcon,
+            title: '返回',
+            layout: 'icon',
+            onPress: () => this.props.navigator.pop(),
+          }}
+        />
         <CreateAccountForm onSubmit={this.submit} />
         <LoadingModal
           visible={isCreating}
