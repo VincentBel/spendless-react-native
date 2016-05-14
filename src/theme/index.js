@@ -1,6 +1,6 @@
-import { lightBlue400, pinkA200, red500, grey300, grey400 } from './colors'
+import { lightBlue500, pinkA200, red500, grey300, grey400 } from './colors'
 
-export const primaryColor = lightBlue400
+export const primaryColor = lightBlue500
 export const accentColor = pinkA200
 export const rippleColor = grey400
 export const errorColor = red500

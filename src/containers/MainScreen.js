@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import { StyleSheet, View, ToolbarAndroid } from 'react-native'
-import ScrollableTabView from 'react-native-scrollable-tab-view'
+import { StyleSheet, View } from 'react-native'
 
-import { Header } from '../components'
+import { Header, SlScrollableTabView } from '../components'
 import General from './General'
 import Chart from './Chart'
 import Account from './Account'
@@ -25,12 +24,12 @@ class MainScreen extends Component {
     return (
       <View style={styles.root}>
         <Header title="Spendless" />
-        <ScrollableTabView>
+        <SlScrollableTabView>
           <General tabLabel="总览" navigator={navigator} />
           <Chart tabLabel="报表" />
           <Account tabLabel="账户" navigator={navigator} />
           <Me tabLabel="我" />
-        </ScrollableTabView>
+        </SlScrollableTabView>
       </View>
     )
   }
