@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   content: {
-    marginTop: 56,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'stretch',
@@ -53,7 +52,7 @@ class Category extends Component {
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     navigator: PropTypes.object.isRequired,
-    selectedMainCategoryId: PropTypes.string.isRequired,
+    selectedMainCategoryId: PropTypes.string,
     mainCategories: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,

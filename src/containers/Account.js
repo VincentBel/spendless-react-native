@@ -143,7 +143,7 @@ function mapStateToProps(state) {
   } = state
   return {
     isFetching,
-    accounts: ids ? ids.map(id => accounts[id]) : null,
+    accounts: ids ? ids.map(id => accounts[id]) : [],
   }
 }
 
