@@ -5,6 +5,7 @@ import MainScreen from './MainScreen'
 import CreateBill from './CreateBill'
 import CreateAccount from './CreateAccount'
 import Category from './Category'
+import AccountSelector from './AccountSelector'
 import Register from './Register'
 
 const styles = StyleSheet.create({
@@ -73,7 +74,10 @@ class AppNavigator extends Component {
       return <Register />
     }
     if (route.selectCategory) {
-      return <Category navigator={navigator} />
+      return <Category navigator={navigator} onSelectSubCategory={route.onSelectSubCategory} />
+    }
+    if (route.selectAccount) {
+      return <AccountSelector navigator={navigator} onSelectAccount={route.onSelectAccount} />
     }
     if (route.createBill) {
       return <CreateBill navigator={navigator} />

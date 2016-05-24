@@ -2,6 +2,7 @@ import { Schema, arrayOf, normalize } from 'normalizr'
 
 const userSchema = new Schema('users')
 const accountSchema = new Schema('accounts')
+const billSchema = new Schema('bills')
 
 const mainCategorySchema = new Schema('mainCategories')
 const subCategorySchema = new Schema('subCategories')
@@ -14,6 +15,8 @@ export const Schemas = {
   USER_ARRAY: arrayOf(userSchema),
   ACCOUNT: accountSchema,
   ACCOUNT_ARRAY: arrayOf(accountSchema),
+  BILL: billSchema,
+  BILL_ARRAY: arrayOf(billSchema),
   MAIN_CATEGORY: mainCategorySchema,
   MAIN_CATEGORY_ARRAY: arrayOf(mainCategorySchema),
 }

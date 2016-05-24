@@ -61,6 +61,7 @@ class Category extends Component {
     subCategories: PropTypes.array.isRequired,
     loadCategories: PropTypes.func.isRequired,
     selectMainCategory: PropTypes.func.isRequired,
+    onSelectSubCategory: PropTypes.func,
   };
 
   constructor(props) {
@@ -121,7 +122,14 @@ class Category extends Component {
 
   _renderSubRow(sub) {
     return (
-      <SlTouchable>
+      <SlTouchable
+        onPress={() => {
+          this.props.navigator.pop()
+          if (this.props.onSelectSubCategory) {
+            this.props.onSelectSubCategory(sub)
+          }
+        }}
+      >
         <View style={styles.subListItem}>
           <Text style={styles.subListText}>{sub.name}</Text>
           <Icon

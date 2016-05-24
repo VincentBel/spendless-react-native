@@ -2,6 +2,7 @@ import merge from 'lodash/merge'
 
 export default function reducer(state = {
   accounts: {},
+  bills: {},
   mainCategories: {},
   subCategories: {},
 }, action = {}) {
