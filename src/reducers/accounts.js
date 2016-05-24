@@ -1,4 +1,5 @@
 import { CALL_AUTH_API, Schemas } from '../middleware/api'
+import union from 'lodash/union'
 
 const ACCOUNTS_REQUEST = 'ACCOUNTS_REQUEST'
 const ACCOUNTS_SUCCESS = 'ACCOUNTS_SUCCESS'
@@ -59,6 +60,11 @@ function itemsReducers(state = itemsDefaultState, action) {
         ...state,
         isFetching: false,
       }
+    case CREATE_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        ids: union(state.ids, [action.response.result]),
+      }
     default:
       return state
   }
@@ -70,18 +76,23 @@ export default function reducer(state = {
 }, action) {
   switch (action.type) {
     case CREATE_ACCOUNT_REQUEST:
-    case CREATE_ACCOUNT_SUCCESS:
     case CREATE_ACCOUNT_FAILURE:
       return {
         ...state,
         create: createReducer(state.create, action),
+      }
+    case CREATE_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        create: createReducer(state.create, action),
+        items: itemsReducers(state.items, action),
       }
     case ACCOUNTS_REQUEST:
     case ACCOUNTS_SUCCESS:
     case ACCOUNTS_FAILURE:
       return {
         ...state,
-        items: itemsReducers(action.items, action),
+        items: itemsReducers(state.items, action),
       }
     default:
       return state
