@@ -107,7 +107,7 @@ class Category extends Component {
 
   _renderMainRow({ id, name }) {
     return (
-      <SlTouchable onPress={() => this.props.selectMainCategory(id)}>
+      <SlTouchable rippleColor="#f3f3f3" onPress={() => this.props.selectMainCategory(id)}>
         <View
           style={[
             styles.mainListItem,
