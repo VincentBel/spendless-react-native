@@ -4,9 +4,10 @@ import { rippleColor as defaultRippleColor } from '../theme'
 
 
 // Custom Touchable Component
-function SlTouchable({ children, onPress, rippleColor = defaultRippleColor }) {
+function SlTouchable({ disabled, children, onPress, rippleColor = defaultRippleColor }) {
   return (
     <TouchableNativeFeedback
+      disabled={disabled}
       onPress={onPress}
       background={TouchableNativeFeedback.Ripple(rippleColor)}
     >
@@ -16,6 +17,7 @@ function SlTouchable({ children, onPress, rippleColor = defaultRippleColor }) {
 }
 
 SlTouchable.propTypes = {
+  disabled: PropTypes.bool,
   children: PropTypes.node,
   onPress: PropTypes.func,
   rippleColor: PropTypes.string,

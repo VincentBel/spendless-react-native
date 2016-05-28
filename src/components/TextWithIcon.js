@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import SlTouchable from './SlTouchable'
 import Icon from './Icon'
+import { disabledOpacity } from '../theme'
 
 const styles = StyleSheet.create({
   root: {
@@ -11,6 +12,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 16,
   },
+  disabled: {
+    opacity: disabledOpacity,
+  },
   text: {
     marginLeft: 8,
   },
@@ -19,6 +23,7 @@ const styles = StyleSheet.create({
 // text with icon on the left
 export default function TextWithIcon({
   touchable = true,
+  disabled = false,
   onPress,
   style,
   text,
@@ -27,8 +32,8 @@ export default function TextWithIcon({
   iconName,
 }) {
   const content = (
-    <View style={[styles.root, style]}>
-      <Icon name={iconName} size={24} color={iconColor}/>
+    <View style={[styles.root, style, disabled && styles.disabled]}>
+      <Icon name={iconName} size={24} color={iconColor} />
       <Text style={[styles.text, textStyle]}>
         {text}
       </Text>
@@ -36,7 +41,7 @@ export default function TextWithIcon({
   )
   if (touchable) {
     return (
-      <SlTouchable onPress={onPress}>
+      <SlTouchable disabled={disabled} onPress={onPress}>
         {content}
       </SlTouchable>
     )
@@ -46,6 +51,7 @@ export default function TextWithIcon({
 
 TextWithIcon.propTypes = {
   touchable: PropTypes.bool,
+  disabled: PropTypes.bool,
   onPress: PropTypes.func,
   style: View.propTypes.style,
   text: PropTypes.string.isRequired,
