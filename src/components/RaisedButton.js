@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   text: {
-    position: 'relative',
-    top: 2,
     color: 'white',
   },
   textDisabled: {
