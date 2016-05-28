@@ -28,7 +28,7 @@ class MainScreen extends Component {
           <General tabLabel="总览" navigator={navigator} />
           <Chart tabLabel="报表" />
           <Account tabLabel="账户" navigator={navigator} />
-          <Me tabLabel="我" />
+          <Me tabLabel="我" navigator={navigator} />
         </SlScrollableTabView>
       </View>
     )
