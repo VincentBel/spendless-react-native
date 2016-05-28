@@ -6,8 +6,10 @@ import accounts from './accounts'
 import bills from './bills'
 import categories from './categories'
 import centralizedError from './centralizedError'
+import alarm from './alarm'
 
 const rootReducers = combineReducers({
+  alarm,
   auth,
   entities,
   form: formReducer,

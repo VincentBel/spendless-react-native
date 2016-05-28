@@ -7,6 +7,7 @@ import CreateAccount from './CreateAccount'
 import Category from './Category'
 import AccountSelector from './AccountSelector'
 import Register from './Register'
+import SetAlarm from './SetAlarm'
 
 const styles = StyleSheet.create({
   container: {
@@ -84,6 +85,9 @@ class AppNavigator extends Component {
     }
     if (route.createAccount) {
       return <CreateAccount navigator={navigator} />
+    }
+    if (route.setAlarm) {
+      return <SetAlarm navigator={navigator} />
     }
     return <MainScreen navigator={navigator} />
   }
