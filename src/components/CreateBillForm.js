@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 import SlTouchable from './SlTouchable'
 import Icon from './Icon'
 import IconTextInput from './IconTextInput'
+import TextWithIcon from './TextWithIcon'
 import RaisedButton from './RaisedButton'
 import { errorColor } from '../theme'
 
@@ -20,11 +21,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 24,
+    paddingHorizontal: 20,
     paddingVertical: 16,
-  },
-  fieldText: {
-    marginLeft: 8,
   },
   fieldTextError: {
     color: errorColor,
@@ -59,30 +57,18 @@ function CreateBillForm({ navigator, submitting, handleSubmit }) {
         component={subCategory => {
           const errorText = getErrorText(subCategory)
           return (
-            <SlTouchable
+            <TextWithIcon
+              iconName="view-list"
+              iconColor={errorText ? errorColor : null}
+              text={errorText || subCategory.value.name || '选择类别'}
+              textStyle={errorText ? styles.fieldTextError : null}
               onPress={() => {
                 navigator.push({
                   selectCategory: true,
                   onSelectSubCategory: sub => subCategory.onChange(sub),
                 })
               }}
-            >
-              <View style={styles.field}>
-                <Icon
-                  name="view-list"
-                  size={24}
-                  color={errorText ? errorColor : null}
-                />
-                <Text
-                  style={[
-                    styles.fieldText,
-                    errorText && styles.fieldTextError,
-                  ]}
-                >
-                  {errorText || subCategory.value.name || '选择类别'}
-                </Text>
-              </View>
-            </SlTouchable>
+            />
           )
         }}
       />
@@ -91,30 +77,18 @@ function CreateBillForm({ navigator, submitting, handleSubmit }) {
         component={account => {
           const errorText = getErrorText(account)
           return (
-            <SlTouchable
+            <TextWithIcon
+              iconName="account-balance-wallet"
+              iconColor={errorText ? errorColor : null}
+              text={errorText || account.value.name || '选择账户'}
+              textStyle={errorText ? styles.fieldTextError : null}
               onPress={() => {
                 navigator.push({
                   selectAccount: true,
                   onSelectAccount: selectedAccount => account.onChange(selectedAccount),
                 })
               }}
-            >
-              <View style={styles.field}>
-                <Icon
-                  name="account-balance-wallet"
-                  size={24}
-                  color={errorText ? errorColor : null}
-                />
-                <Text
-                  style={[
-                    styles.fieldText,
-                    errorText && styles.fieldTextError,
-                  ]}
-                >
-                  {errorText || account.value.name || '选择账户'}
-                </Text>
-              </View>
-            </SlTouchable>
+            />
           )
         }}
       />
