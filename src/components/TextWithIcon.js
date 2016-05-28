@@ -1,0 +1,55 @@
+import React, { PropTypes } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import SlTouchable from './SlTouchable'
+import Icon from './Icon'
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+  },
+  text: {
+    marginLeft: 8,
+  },
+})
+
+// text with icon on the left
+export default function TextWithIcon({
+  touchable = true,
+  onPress,
+  style,
+  text,
+  textStyle,
+  iconColor,
+  iconName,
+}) {
+  const content = (
+    <View style={[styles.root, style]}>
+      <Icon name={iconName} size={24} color={iconColor}/>
+      <Text style={[styles.text, textStyle]}>
+        {text}
+      </Text>
+    </View>
+  )
+  if (touchable) {
+    return (
+      <SlTouchable onPress={onPress}>
+        {content}
+      </SlTouchable>
+    )
+  }
+  return content
+}
+
+TextWithIcon.propTypes = {
+  touchable: PropTypes.bool,
+  onPress: PropTypes.func,
+  style: View.propTypes.style,
+  text: PropTypes.string.isRequired,
+  textStyle: Text.propTypes.style,
+  iconColor: PropTypes.string,
+  iconName: PropTypes.string.isRequired,
+}
