@@ -5,6 +5,7 @@ import MainScreen from './MainScreen'
 import CreateBill from './CreateBill'
 import CreateAccount from './CreateAccount'
 import Category from './Category'
+import CreateMainCategory from './CreateMainCategory'
 import AccountSelector from './AccountSelector'
 import Register from './Register'
 import SetAlarm from './SetAlarm'
@@ -76,6 +77,9 @@ class AppNavigator extends Component {
     }
     if (route.selectCategory) {
       return <Category navigator={navigator} onSelectSubCategory={route.onSelectSubCategory} />
+    }
+    if (route.createMainCategory) {
+      return <CreateMainCategory navigator={navigator} />
     }
     if (route.selectAccount) {
       return <AccountSelector navigator={navigator} onSelectAccount={route.onSelectAccount} />

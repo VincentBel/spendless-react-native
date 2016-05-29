@@ -1,6 +1,7 @@
 export { default as BackIcon } from './BackIcon'
 export { default as CreateAccountForm } from './CreateAccountForm'
 export { default as CreateBillForm } from './CreateBillForm'
+export { default as CreateCategoryForm } from './CreateCategoryForm'
 export { default as FloatingActionButton } from './FloatingActionButton'
 export { default as Header } from './Header'
 export { default as Icon } from './Icon'

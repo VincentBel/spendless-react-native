@@ -28,6 +28,16 @@ const styles = StyleSheet.create({
   mainListItemActive: {
     backgroundColor: 'white',
   },
+  addNewRoot: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  addNewText: {
+    marginLeft: 8,
+    color: 'rgba(0, 0, 0, 0.36)',
+  },
   subList: {
     flex: 2,
     backgroundColor: 'white',
@@ -35,15 +45,13 @@ const styles = StyleSheet.create({
   subListItem: {
     flex: 1,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 12,
     paddingRight: 24,
     paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: grey100,
-  },
-  subListText: {
-    flex: 1,
   },
 })
 
@@ -83,7 +91,9 @@ class Category extends Component {
     }
 
     this._renderMainRow = this._renderMainRow.bind(this)
+    this._renderMainFooter = this._renderMainFooter.bind(this)
     this._renderSubRow = this._renderSubRow.bind(this)
+    this._renderSubFooter = this._renderSubFooter.bind(this)
   }
 
   componentDidMount() {
@@ -120,6 +130,22 @@ class Category extends Component {
     )
   }
 
+  _renderMainFooter() {
+    return (
+      <SlTouchable
+        onPress={() => {
+          this.props.navigator.push({ createMainCategory: true })
+        }}
+        rippleColor="#f3f3f3"
+      >
+        <View style={[styles.mainListItem, styles.addNewRoot]}>
+          <Icon size={20} name="add" color="#9e9e9e" />
+          <Text style={styles.addNewText}>新增</Text>
+        </View>
+      </SlTouchable>
+    )
+  }
+
   _renderSubRow(sub) {
     return (
       <SlTouchable
@@ -131,12 +157,23 @@ class Category extends Component {
         }}
       >
         <View style={styles.subListItem}>
-          <Text style={styles.subListText}>{sub.name}</Text>
+          <Text>{sub.name}</Text>
           <Icon
             size={28}
             name={sub.star ? 'star' : 'star-border'}
             color={sub.star ? yellow500 : grey300}
           />
+        </View>
+      </SlTouchable>
+    )
+  }
+
+  _renderSubFooter() {
+    return (
+      <SlTouchable>
+        <View style={[styles.subListItem, styles.addNewRoot]}>
+          <Icon size={24} name="add" color={grey300} />
+          <Text style={styles.addNewText}>新增子类</Text>
         </View>
       </SlTouchable>
     )
@@ -154,11 +191,13 @@ class Category extends Component {
             style={styles.mainList}
             dataSource={this.state.mainCategoryDataSource}
             renderRow={this._renderMainRow}
+            renderFooter={this._renderMainFooter}
           />
           <ListView
             style={styles.subList}
             dataSource={this.state.subCategoryDataSource}
             renderRow={this._renderSubRow}
+            renderFooter={this._renderSubFooter}
           />
         </View>
       )
